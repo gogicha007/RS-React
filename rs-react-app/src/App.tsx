@@ -2,21 +2,29 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [query, setQuery] = useState('');
+
+  const clickSearch = () => {
+    console.log(query);
+  };
 
   return (
     <>
       <div className="top-control">
-        <div>
-          <label htmlFor="site-search">Search the site</label>
-          <input type="search" id="site-search" name="q" />
-          <button onClick={()=>{}}>Search</button>
+        <div className="search-bar">
+          <label htmlFor="search">Search the site</label>
+          <input
+            value={query}
+            onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
+            type="search"
+            id="search"
+            name='s'
+          />
+          <button onClick={clickSearch}>Search</button>
         </div>
       </div>
       <div className="results">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <div className="table"></div>
       </div>
     </>
   );
