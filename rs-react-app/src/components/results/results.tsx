@@ -2,9 +2,6 @@ import { Component } from 'react';
 import { IFData } from '../../types/interface';
 
 class Results extends Component<{ data: IFData[] }> {
-  constructor(props: { data: IFData[] }) {
-    super(props);
-  }
   render() {
     return (
       <table className="table">
