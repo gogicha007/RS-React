@@ -10,18 +10,20 @@ class App extends Component {
   };
 
   handleDataChange = (results: IFData[]) => {
-    console.log('on data change')
-    this.setState({results})
-  }
+    console.log('on data change');
+    this.setState({ results });
+  };
   render() {
     return (
       <>
         <div className="top-control">
-          <SearchBar onDataChange={this.handleDataChange}/>
+          <SearchBar onDataChange={this.handleDataChange} />
         </div>
         <div className="results">
           <h2>Results</h2>
-          {this.state.results && this.state.results.length > 0 && <Results data={this.state.results}/>}
+          {this.state.results && this.state.results.length > 0 && (
+            <Results data={this.state.results} />
+          )}
         </div>
       </>
     );

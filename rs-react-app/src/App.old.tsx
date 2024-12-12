@@ -17,7 +17,7 @@ function App() {
       </div>
       <div className="results">
         <h2>Results</h2>
-        {results && results.length > 0 && <Results results = {results}/>}
+        {results && results.length > 0 && <Results results={results} />}
       </div>
     </>
   );

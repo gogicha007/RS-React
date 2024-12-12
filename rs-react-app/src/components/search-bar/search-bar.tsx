@@ -6,9 +6,9 @@ type SetPropsType = {
   setResults: Dispatch<SetStateAction<any[]>>;
 };
 
-export const SearchBar = ({setResults}: SetPropsType) => {
+export const SearchBar = ({ setResults }: SetPropsType) => {
   const [input, setInput] = useState('');
-  
+
   const clickSearch = async () => {
     const response = await fetch(`https://pokeapi.co/api/v2/${input}`);
     const data = await response.json();

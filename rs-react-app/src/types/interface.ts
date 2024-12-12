@@ -1,4 +1,4 @@
 export interface IFData {
-    name: string;
-    url: string
+  name: string;
+  url: string;
 }
