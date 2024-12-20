@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "precommit": "npm run lint",
     "preview": "vite preview",
     "format:fix": "prettier --write ."
   },
@@ -35,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run precommit"
     }
   }
 }
