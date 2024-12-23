@@ -5,15 +5,17 @@ import { Component } from 'react';
 import { IFData } from './types/interface';
 
 class App extends Component {
+  
   state = {
     results: [] as IFData[],
   };
-
+  
   handleDataChange = (results: IFData[]) => {
     console.log('on data change');
     this.setState({ results });
   };
   render() {
+    throw Error("oops")
     return (
       <>
         <div className="top-control">

@@ -2,7 +2,12 @@ import { Component } from 'react';
 import { IFData } from '../../types/interface';
 
 class Results extends Component<{ data: IFData[] }> {
+ 
   render() {
+    if(this.props.data.length ===0){
+      console.log('error')
+      throw new Error('its error')
+    }
     return (
       <table className="table">
         <thead>

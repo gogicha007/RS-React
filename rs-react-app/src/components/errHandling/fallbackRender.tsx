@@ -1,8 +1,12 @@
-function ErrFallbackComponent(errorMessage: string) {
+
+function ErrFallbackComponent() {
     return (
       <div role="alert">
+        <div>
+          An error was thrown: 
+        </div>
         <p>Something went wrong:</p>
-        <pre>{errorMessage}</pre>
+        <pre>{'error'}</pre>
       </div>
     )
   }
