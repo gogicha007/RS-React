@@ -1,12 +1,17 @@
-import { Component } from "react";
-import './search.css'
+import { Component } from 'react';
+import { IFData } from '../../types/interface';
+import './search.css';
 
-class SearchBar extends Component {
-    state = {
+class SearchBar extends Component<
+  { onDataChange: (data: IFData[]) => void },
+  { input: string }
+> {
+  constructor(props: { onDataChange: (data: IFData[]) => void }) {
+    super(props);
+    this.state = {
       input: '',
       results: []
     }
-
     clickSearch = async ()=> {
       const response = await fetch(`https://pokeapi.co/api/v2/${this.state.input}`);
       const data = await response.json();
@@ -29,5 +34,3 @@ class SearchBar extends Component {
       );
     }
   }
-
-  export default SearchBar
