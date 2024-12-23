@@ -5,7 +5,7 @@ function ErrFallbackComponent() {
         <div>
           An error was thrown: 
         </div>
-        <p>Something went wrong:</p>
+        <p>Something went wrong...</p>
         <pre>{'error'}</pre>
       </div>
     )

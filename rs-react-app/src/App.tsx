@@ -11,11 +11,10 @@ class App extends Component {
   };
   
   handleDataChange = (results: IFData[]) => {
-    console.log('on data change');
     this.setState({ results });
   };
   render() {
-    throw Error("oops")
+    // throw Error("oops")
     return (
       <>
         <div className="top-control">
