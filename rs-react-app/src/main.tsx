@@ -7,9 +7,7 @@ import ErrFallbackComponent from './components/errHandling/fallbackRender.tsx';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <ErrorBoundary
-      fallback={ErrFallbackComponent()}
-    >
+    <ErrorBoundary fallback={<ErrFallbackComponent />}>
       <App />
     </ErrorBoundary>
   </StrictMode>

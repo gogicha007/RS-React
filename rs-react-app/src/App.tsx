@@ -3,6 +3,7 @@ import Results from './components/results/results';
 import './App.css';
 import { Component } from 'react';
 import { IFData } from './types/interface';
+import ErrorButton from './components/errorButton/errorButton';
 
 class App extends Component {
   
@@ -26,6 +27,7 @@ class App extends Component {
             <Results data={this.state.results} />
           )}
         </div>
+        <ErrorButton/>
       </>
     );
   }
