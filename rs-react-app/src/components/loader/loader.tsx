@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
+import './Loader.css';
 
-function loader() {
-  const [text, setText] = useState('')
-  
-  useEffect(()=> {
-    setTimeout(()=> {
-
-    })
-  })
-  return <div>loader</div>;
+function Loader() {
+  return (
+    <div className="modal">
+      <div className="loader"></div>
+    </div>
+  );
 }
 
-export default loader;
+export default Loader;

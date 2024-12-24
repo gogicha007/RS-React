@@ -4,12 +4,14 @@ import { IFData } from '../../types/interface';
 
 interface Props {
   onDataChange: (data: IFData[]) => void;
+  showLoader: (value: boolean) => void 
 }
 
 function SearchBar(props: Props) {
   const [inputString, setInputString] = useState('');
 
   const clickSearch = async () => {
+    props.showLoader(true)
     const response = await fetch(`https://pokeapi.co/api/v2/${inputString}`);
     const data = await response.json();
     props.onDataChange(data.results);
