@@ -1,33 +1,22 @@
-import { Component } from 'react';
-
-type Props = Record<string, never>;
-
-type State = {
-  shouldThrowError: boolean;
-};
+import { useEffect, useState } from 'react';
 
 
-class ErrorButton extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      shouldThrowError: false,
-    };
-  }
+function errorButton() {
+  const [shouldThrowError, setShouldThrowError] = useState(false);
 
-  errorThrown = () => {
-    this.setState({ shouldThrowError: true });
-    throw new Error('Oops...');
+  const errorThrown = () => {
+    setShouldThrowError(true);
   };
 
-  render() {
-    const { shouldThrowError } = this.state;
+  useEffect(() => {
+    if (shouldThrowError) throw new Error('Error throwing button clicked');
+  }, [shouldThrowError]);
 
-     if (shouldThrowError) {
-      throw new Error('Error throwing button was clicked');
-    }
-    return <button type="button" onClick={this.errorThrown}>Error Thrower</button>;
-  }
+  return (
+    <button type="button" onClick={errorThrown}>
+      Error Thrower
+    </button>
+  );
 }
 
-export default ErrorButton;
+export default errorButton;

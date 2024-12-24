@@ -1,36 +1,29 @@
 import SearchBar from './components/search/search';
 import Results from './components/results/results';
 import './App.css';
-import { Component, ReactNode } from 'react';
+import { useState } from 'react';
 import { IFData } from './types/interface';
 import ErrorButton from './components/errorButton/errorButton';
 
-class App extends Component {
-  
-  state = {
-    results: [] as IFData[],
+function App() {
+  const [results, setResults] = useState([] as IFData[]);
+
+  const handleDataChange = (results: IFData[]) => {
+    setResults(results);
   };
-  
-  handleDataChange = (results: IFData[]) => {
-    this.setState({ results });
-  };
-  render(): ReactNode {
-    // throw Error("oops")
-    return (
-      <>
-        <div className="top-control">
-          <SearchBar onDataChange={this.handleDataChange} />
-          <ErrorButton/>
-        </div>
-        <div className="results">
-          <h2>Results</h2>
-          {this.state.results && this.state.results.length > 0 && (
-            <Results data={this.state.results} />
-          )}
-        </div>
-      </>
-    );
-  }
+
+  return (
+    <>
+      <div className="top-control">
+        <SearchBar onDataChange={handleDataChange} />
+        <ErrorButton />
+      </div>
+      <div className="results">
+        <h2>Results</h2>
+        {results && results.length > 0 && <Results data={results} />}
+      </div>
+    </>
+  );
 }
 
 export default App;
