@@ -1,6 +1,8 @@
-import { useState } from 'react';
 import './search.css';
+import { useEffect, useState } from 'react';
+import { lsHandler } from '../../utils/localStorageHandler';
 import { IFData } from '../../types/interface';
+import { getList } from '../../utils/fetcher';
 
 interface Props {
   onDataChange: (data: IFData[]) => void;
@@ -12,14 +14,21 @@ function SearchBar(props: Props) {
 
   const clickSearch = async () => {
     props.showLoader(true);
-    const response = await fetch(`https://pokeapi.co/api/v2/${inputString}`);
-    const data = await response.json();
-    props.onDataChange(data.results);
+    const array = await getList(inputString) || [];
+    if (array.length > 0) lsHandler.setValue(inputString);
+    props.onDataChange(array);
   };
 
   const changeInput = (string: string) => {
     setInputString(string);
   };
+
+  useEffect(() => {
+    const searchWord = lsHandler.getValue();
+    if (searchWord) {
+      setInputString(searchWord);
+    }
+  }, []);
 
   return (
     <div className="search-bar">
