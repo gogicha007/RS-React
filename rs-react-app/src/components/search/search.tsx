@@ -23,6 +23,7 @@ function SearchBar(props: Props) {
     setInputString(string);
   };
 
+  
   useEffect(() => {
     const searchWord = lsHandler.getValue();
     if (searchWord) {
