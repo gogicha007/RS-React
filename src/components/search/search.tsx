@@ -14,7 +14,7 @@ function SearchBar(props: Props) {
 
   const clickSearch = async () => {
     props.showLoader(true);
-    const array = await getList(inputString) || [];
+    const array = (await getList(inputString)) || [];
     if (array.length > 0) lsHandler.setValue(inputString);
     props.onDataChange(array);
   };
@@ -23,7 +23,7 @@ function SearchBar(props: Props) {
     setInputString(string);
   };
 
-    useEffect(() => {
+  useEffect(() => {
     const searchWord = lsHandler.getValue();
     if (searchWord) {
       setInputString(searchWord);
