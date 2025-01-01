@@ -1,12 +1,13 @@
-import { IFData } from '../../types/interface';
+import { IFCharacter } from '../../types/interface';
 
-function results(props: { data: IFData[] }) {
+function results(props: { data: IFCharacter[] }) {
   return (
     <table className="table">
       <thead>
         <tr>
           <th>Name</th>
-          <th>URL</th>
+          <th>Gender</th>
+          <th>Hair</th>
         </tr>
       </thead>
       <tbody>
@@ -14,7 +15,8 @@ function results(props: { data: IFData[] }) {
           return (
             <tr key={idx}>
               <td>{obj.name}</td>
-              <td>{obj.url}</td>
+              <td>{obj.gender}</td>
+              <td>{obj.hair}</td>
             </tr>
           );
         })}

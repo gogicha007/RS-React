@@ -1,11 +1,11 @@
 import './search.css';
 import { useEffect, useState } from 'react';
 import { lsHandler } from '../../utils/localStorageHandler';
-import { IFData } from '../../types/interface';
+import { IFCharacter } from '../../types/interface';
 import { getList } from '../../utils/fetcher';
 
 interface Props {
-  onDataChange: (data: IFData[]) => void;
+  onDataChange: (data: IFCharacter[]) => void;
   showLoader: (value: boolean) => void;
 }
 
