@@ -4,6 +4,7 @@ import SearchBar from '../../components/search/search';
 import ErrorButton from '../../components/errorButton/errorButton';
 import Results from '../../components/results/results';
 import Loader from '../../components/loader/loader';
+import styles from './home.module.css';
 
 function HomePage() {
   const [results, setResults] = useState([] as IFCharacter[]);
@@ -18,7 +19,7 @@ function HomePage() {
 
   return (
     <>
-      <div className="home_top">
+      <div className={styles.home__top}>
         <SearchBar onDataChange={handleDataChange} showLoader={setLoader} />
         <ErrorButton />
       </div>
