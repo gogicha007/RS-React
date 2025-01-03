@@ -1,10 +1,13 @@
 import styles from './card.module.css';
 import { IFCharacter } from '../../types/interface';
 
-export const card = (data: IFCharacter) => {
+export const Card = (data: IFCharacter) => {
   return (
     <div className={styles.card}>
-      <img src={data.image} alt="" />
+      <img className={styles.card__image} src={data.image} alt="" />
+      <p className={styles.card__data}>{data.name}</p>
+      <p className={styles.card__data}>{data.gender}</p>
+      <p className={styles.card__data}>{data.hair}</p>
     </div>
   );
 };

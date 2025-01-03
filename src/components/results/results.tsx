@@ -1,27 +1,14 @@
+import styles from './results.module.css';
 import { IFCharacter } from '../../types/interface';
+import { Card } from '../card/card';
 
 function results(props: { data: IFCharacter[] }) {
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Hair</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.data.map((obj, idx) => {
-          return (
-            <tr key={idx}>
-              <td>{obj.name}</td>
-              <td>{obj.gender}</td>
-              <td>{obj.hair}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div className={styles.results}>
+      {props.data.map((obj) => {
+        return <Card key={obj.id} {...obj} />;
+      })}
+    </div>
   );
 }
 
