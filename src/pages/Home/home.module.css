@@ -1,3 +1,7 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
 .home__top {
   width: 100%;
   padding: 10px;
@@ -7,6 +11,8 @@
   justify-content: center;
   gap: 10px;
 }
-
 .home__results {
+}
+.home__pagination {
+  display: flex;
 }

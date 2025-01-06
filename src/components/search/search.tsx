@@ -1,11 +1,11 @@
 import './search.css';
 import { useEffect, useState } from 'react';
 import { lsHandler } from '../../utils/localStorageHandler';
-import { IFCharacter } from '../../types/interface';
+import { IFResponse } from '../../types/interface';
 import { getList } from '../../utils/fetcher';
 
 interface Props {
-  onDataChange: (data: IFCharacter[]) => void;
+  onDataChange: (data: IFResponse) => void;
   showLoader: (value: boolean) => void;
 }
 
@@ -14,9 +14,9 @@ function SearchBar(props: Props) {
 
   const clickSearch = async () => {
     props.showLoader(true);
-    const array = (await getList(inputString)) || [];
-    if (array.length > 0) lsHandler.setValue(inputString);
-    props.onDataChange(array);
+    const res = await getList(inputString);
+    if (res) lsHandler.setValue(inputString);
+    props.onDataChange(res as IFResponse);
   };
 
   const changeInput = (string: string) => {

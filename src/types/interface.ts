@@ -1,7 +1,20 @@
+export interface IFResponse {
+  info: IFRespInfo;
+  results: IFCharacter[];
+}
+
+export interface IFRespInfo {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string | null;
+}
+
 export interface IFCharacter {
   id: number;
   name: string;
+  status: string;
+  species: string;
   gender: string;
-  hair: string;
   image: string;
 }
