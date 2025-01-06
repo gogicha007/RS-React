@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IFCharacter, IFResponse } from '../../types/interface';
+import { IFCharacter, IFRespInfo, IFResponse } from '../../types/interface';
 import SearchBar from '../../components/search/search';
 import ErrorButton from '../../components/errorButton/errorButton';
 import Results from '../../components/results/results';
@@ -8,14 +8,14 @@ import styles from './home.module.css';
 import { Pagination } from '../../components/pagination/pagination';
 
 function HomePage() {
-  // const [responseInfo, setRespInfo] = useState({}as IFRespInfo)
+  const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
   // const [currentPage, setCurrentPage] = useState(1)
   const [results, setResults] = useState([] as IFCharacter[]);
   const [loading, setLoader] = useState(false);
 
   const handleDataChange = (res: IFResponse) => {
     setTimeout(() => {
-      // setRespInfo(res ? res.info : {} as IFRespInfo)
+      setRespInfo(res ? res.info : ({} as IFRespInfo));
       setResults(res ? res.results : []);
       setLoader(false);
     }, 1000);
@@ -33,7 +33,11 @@ function HomePage() {
         {results && results.length > 0 && <Results data={results} />}
       </div>
       <div className={styles.home__pagination}>
-        <Pagination />
+        <Pagination
+          onPageChange={handleDataChange}
+          showLoader={setLoader}
+          resInfo={responseInfo}
+        />
       </div>
       {loading && <Loader />}
     </>
