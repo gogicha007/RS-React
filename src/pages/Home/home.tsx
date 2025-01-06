@@ -9,7 +9,6 @@ import { Pagination } from '../../components/pagination/pagination';
 
 function HomePage() {
   const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
-  // const [currentPage, setCurrentPage] = useState(1)
   const [results, setResults] = useState([] as IFCharacter[]);
   const [loading, setLoader] = useState(false);
 
