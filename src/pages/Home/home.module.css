@@ -16,6 +16,6 @@
 }
 .home__results {
 }
-.home__pagination {
-  display: flex;
+.home__details {
+  display: none;
 }

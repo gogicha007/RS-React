@@ -22,7 +22,6 @@ function HomePage() {
 
   return (
     <>
-      <div className={styles.home}></div>
       <div className={styles.home__top}>
         <SearchBar onDataChange={handleDataChange} showLoader={setLoader} />
         <ErrorButton />
@@ -31,16 +30,17 @@ function HomePage() {
         <div className={styles.home__results}>
           <h2>Results</h2>
           {results && results.length > 0 && (
-            <div className={styles.home__results}>
+            <>
               <Results data={results} />
               <Pagination
                 onPageChange={handleDataChange}
                 showLoader={setLoader}
                 resInfo={responseInfo}
               />
-            </div>
+            </>
           )}
         </div>
+        <div className={styles.home__details}>Details</div>
       </div>
       {loading && <Loader />}
     </>
