@@ -27,16 +27,20 @@ function HomePage() {
         <SearchBar onDataChange={handleDataChange} showLoader={setLoader} />
         <ErrorButton />
       </div>
-      <div className={styles.home__results}>
-        <h2>Results</h2>
-        {results && results.length > 0 && <Results data={results} />}
-      </div>
-      <div className={styles.home__pagination}>
-        <Pagination
-          onPageChange={handleDataChange}
-          showLoader={setLoader}
-          resInfo={responseInfo}
-        />
+      <div className={styles.home__main}>
+        <div className={styles.home__results}>
+          <h2>Results</h2>
+          {results && results.length > 0 && (
+            <div className={styles.home__results}>
+              <Results data={results} />
+              <Pagination
+                onPageChange={handleDataChange}
+                showLoader={setLoader}
+                resInfo={responseInfo}
+              />
+            </div>
+          )}
+        </div>
       </div>
       {loading && <Loader />}
     </>

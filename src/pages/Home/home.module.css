@@ -11,6 +11,9 @@
   justify-content: center;
   gap: 10px;
 }
+.home__main {
+  display: flex;
+}
 .home__results {
 }
 .home__pagination {
