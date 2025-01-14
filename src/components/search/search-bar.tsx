@@ -1,4 +1,4 @@
-import './search.css';
+import styles from './search-bar.module.css';
 import { useEffect, useState } from 'react';
 import { lsHandler } from '../../utils/localStorageHandler';
 import { IFResponse } from '../../types/interface';
@@ -31,7 +31,7 @@ function SearchBar(props: Props) {
   }, []);
 
   return (
-    <div className="search-bar">
+    <div className={styles.search__bar}>
       <label htmlFor="search">Search the site</label>
       <input
         value={inputString}

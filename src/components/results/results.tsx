@@ -1,16 +1,18 @@
 import styles from './results.module.css';
 import { IFCharacter } from '../../types/interface';
 import { Card } from '../card/card';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
-function Results(props: { data: IFCharacter[] }) {
+function Results() {
+  const { state } = useLocation();
+  const data = state.data;
   return (
     <div className={styles.results}>
       <div className={styles.results__list}>
-        {props.data.map((obj) => {
+        {data.map((obj: IFCharacter) => {
           return (
             <Link to={obj.id.toString()} key={obj.id}>
-              <Card {...obj} />;
+              <Card {...obj} />
             </Link>
           );
         })}
