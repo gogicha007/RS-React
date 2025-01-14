@@ -1,12 +1,12 @@
-// import Results from '../components/results/results';
-// import { IFCharacter } from '../types/interface';
+import { Outlet } from 'react-router';
 
-// const ResultsLayout = (props: {data: IFCharacter}) => {
-//   return (
-//     <div>
-//       {/* <Results {...props.data}/> */}
-//     </div>
-//   );
-// };
+const ResultsLayout = () => {
+  return (
+    <div>
+      <h2>Results</h2>
+      <Outlet />
+    </div>
+  );
+};
 
-// export default ResultsLayout;
+export default ResultsLayout;
