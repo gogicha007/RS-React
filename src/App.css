@@ -4,14 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-#search {
-  height: 30px;
-}

@@ -7,13 +7,16 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import NotFound from './pages/notfound/notfound';
-import Results from './components/results/results';
+import { Details, detailsLoader } from './components/details/details';
+import ResultsLayout from './layouts/ResultsLayout';
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route path="results" element={<Results />} />
+        <Route path="results" element={<ResultsLayout />}>
+          <Route path=":id" element={<Details />} loader={detailsLoader} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     )

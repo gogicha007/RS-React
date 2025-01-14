@@ -10,13 +10,16 @@ function HomePage() {
   const [loading, setLoader] = useState(false);
 
   const navigate = useNavigate();
+
   const handleDataChange = (res: IFResponse) => {
     setTimeout(() => {
+      setLoader(false);
       if (res) {
-        setLoader(false);
         navigate('/results', {
           state: { data: res.results, pagination: res.info },
         });
+      } else {
+        navigate('/');
       }
     }, 1000);
   };
