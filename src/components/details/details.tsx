@@ -1,11 +1,11 @@
 import styles from './details.module.css';
 import type { Params } from 'react-router-dom';
-// import { IFCharacter } from '../../types/interface';
 import { getDetails } from '../../utils/fetcher';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 export const Details = () => {
   const obj = useLoaderData();
+  const navigate = useNavigate();
   console.log('obj', obj);
   return (
     <>
@@ -14,7 +14,7 @@ export const Details = () => {
         <p>{obj.origin.name}</p>
         <p>{obj.location.name}</p>
       </div>
-      <button>Close details</button>
+      <button onClick={() => navigate(-1)}>Close details</button>
     </>
   );
 };
