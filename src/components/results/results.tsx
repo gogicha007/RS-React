@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router';
 function Results() {
   const { state } = useLocation();
   const data = state?.data || [];
-
+  console.log(state?.pagination || 'null');
   return (
     <div className={styles.results}>
       <div className={styles.results__list}>

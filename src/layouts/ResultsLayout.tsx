@@ -1,3 +1,4 @@
+import type { Params } from 'react-router';
 import styles from './results-layout.module.css';
 import { Outlet } from 'react-router';
 import Results from '../components/results/results';
@@ -16,3 +17,7 @@ const ResultsLayout = () => {
 };
 
 export default ResultsLayout;
+
+export async function resultsLoader({ params }: { params: Params }) {
+  console.log(params);
+}
