@@ -6,7 +6,6 @@ import { useLoaderData, useNavigate } from 'react-router';
 export const Details = () => {
   const obj = useLoaderData();
   const navigate = useNavigate();
-  console.log('obj', obj);
   return (
     <>
       <div className={styles.details}>

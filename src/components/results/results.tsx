@@ -1,7 +1,8 @@
+import type { Params } from 'react-router';
 import styles from './results.module.css';
 import { IFCharacter } from '../../types/interface';
 import { Card } from '../card/card';
-import { Link, useLocation } from 'react-router';
+import { Link, Outlet, useLocation } from 'react-router';
 
 function Results() {
   const { state } = useLocation();
@@ -18,8 +19,13 @@ function Results() {
           );
         })}
       </div>
+      <Outlet />
     </div>
   );
 }
 
 export default Results;
+
+export async function resultsLoader({ params }: { params: Params }) {
+  console.log(params);
+}
