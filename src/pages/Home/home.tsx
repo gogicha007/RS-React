@@ -15,7 +15,7 @@ function HomePage() {
     setTimeout(() => {
       setLoader(false);
       if (res) {
-        navigate('/results', {
+        navigate('/rickandmorty_charachters', {
           state: { data: res.results, pagination: res.info },
         });
       } else {

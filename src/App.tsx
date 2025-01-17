@@ -14,7 +14,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route path="results" element={<Results />}>
+        <Route path="rickandmorty_charachters?" element={<Results />}>
           <Route path=":id" element={<Details />} loader={detailsLoader} />
         </Route>
         <Route path="*" element={<NotFound />} />

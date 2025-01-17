@@ -1,4 +1,3 @@
-// import type { Params } from 'react-router';
 import styles from './results.module.css';
 import { IFCharacter } from '../../types/interface';
 import { Card } from '../card/card';
@@ -25,7 +24,9 @@ const Results = () => {
     }
     fetchData();
   }, []);
-  console.log('setResults', results);
+
+  // console.log('the results', results);
+
   return (
     <div className={styles.results}>
       <div className={styles.results__list}>
@@ -43,9 +44,3 @@ const Results = () => {
 };
 
 export default Results;
-
-// export async function resultsLoader({ params }: { params: Params }) {
-//   // const data = await getList('Dead')
-//   // console.log('results',data);
-//   // return data
-// }
