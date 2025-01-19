@@ -1,22 +1,26 @@
-import { IFRespInfo, IFResponse } from '../../types/interface';
 import styles from './pagination.module.css';
+import { IFRespInfo } from '../../types/interface';
+// import { useState } from 'react';
 
 interface Props {
-  onPageChange: (data: IFResponse) => void;
   resInfo: IFRespInfo;
-  showLoader: (value: boolean) => void;
 }
 
 export const Pagination = (props: Props) => {
+  // const [loading, setLoader] = useState(false)
+
   const clickPagination = async (direction: 'prev' | 'next') => {
     console.log(props.resInfo[direction]);
-    props.showLoader(true);
+    // setLoader(true);
     const response = await fetch(props.resInfo[direction] as string);
     if (response.status === 200) {
       const data = await response.json();
-      props.onPageChange(data);
+      console.log(data);
+      // props.onPageChange(data);
     }
+    // setLoader(false);
   };
+
   return (
     <>
       <nav className={styles.pgn}>

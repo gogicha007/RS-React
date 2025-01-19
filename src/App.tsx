@@ -8,15 +8,12 @@ import {
 } from 'react-router-dom';
 import NotFound from './pages/notfound/notfound';
 import { Details, detailsLoader } from './components/details/details';
-import Results from './components/results/results';
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route path="rickandmorty_charachters?" element={<Results />}>
-          <Route path=":id" element={<Details />} loader={detailsLoader} />
-        </Route>
+        <Route path=":id" element={<Details />} loader={detailsLoader} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )

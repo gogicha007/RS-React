@@ -1,4 +1,5 @@
 function ErrFallbackComponent() {
+  console.log('error');
   return (
     <div role="alert">
       <div>An error was thrown:</div>
