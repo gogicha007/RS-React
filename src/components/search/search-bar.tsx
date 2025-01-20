@@ -8,7 +8,6 @@ function SearchBar() {
   const { status, setFilters } = useCharacterFilters();
 
   const clickSearch = async () => {
-    console.log('click search');
     lsHandler.setValue(status);
   };
 
