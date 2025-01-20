@@ -15,11 +15,10 @@ const Results = () => {
   const [results, setResults] = useState([] as IFCharacter[]);
   const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
   const [noResults, setNoResults] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  console.log(setSearchParams({ page: '1' }));
+  const [searchParams, _] = useSearchParams();
 
   const temp = () => {
+    console.log(_);
     console.log('temp');
   };
 
@@ -28,7 +27,6 @@ const Results = () => {
       setLoader(true);
       const res = await getList(searchParams.get('status') as string);
       if (res) {
-        // lsHandler.setValue(searchParams.get('status') as string);
         console.log(res);
         setTimeout(() => {
           setLoader(false);
