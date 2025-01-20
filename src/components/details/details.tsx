@@ -20,6 +20,7 @@ export const Details = () => {
 
 export const detailsLoader = async ({ params }: { params: Params<'id'> }) => {
   const { id } = params;
+  console.log('details id', params);
   const res = await getDetails(id as string);
   if (!res) {
     throw Error('Could not found job details');

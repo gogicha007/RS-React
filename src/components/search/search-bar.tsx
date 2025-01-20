@@ -5,21 +5,24 @@ import { useSearchParams } from 'react-router';
 import ErrorButton from '../errorButton/errorButton';
 
 function SearchBar() {
-  const [_, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [inputString, setInputString] = useState('');
 
-  console.log(_);
   const clickSearch = async () => {
-    setSearchParams({ status: inputString });
+    console.log('click search');
+    console.log(searchParams);
+    // setSearchParams({ status: inputString });
+    // setInputString(searchParams.get('status') as string)
   };
 
   const changeInput = (string: string) => {
+    console.log('change input');
     setInputString(string);
+    setSearchParams({ status: inputString });
   };
 
   useEffect(() => {
     const searchWord = lsHandler.getValue();
-    console.log('search word', searchWord);
     if (searchWord) {
       setInputString(searchWord);
     }
@@ -38,8 +41,7 @@ function SearchBar() {
         />
         <button
           type="submit"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             clickSearch();
           }}
         >
