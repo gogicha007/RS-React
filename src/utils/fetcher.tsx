@@ -1,6 +1,9 @@
 import { IFResponse } from '../types/interface';
 
-const getList = async (str: string, page = 1): Promise<IFResponse | null> => {
+const getList = async (
+  page: number,
+  str: string
+): Promise<IFResponse | null> => {
   if (!str) return null;
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/?page=${page}&status=${str}`

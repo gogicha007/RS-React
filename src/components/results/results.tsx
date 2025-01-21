@@ -9,27 +9,25 @@ import Loader from '../loader/loader';
 import { Pagination } from '../pagination/pagination';
 import { useCharacterFilters } from '../../hooks/useCharacterFilter';
 
-const Results = () => {
-  const { status } = useCharacterFilters();
-  const [loading, setLoader] = useState(false);
+const Results = ({ loader }: { loader: boolean }) => {
+  const { page, status } = useCharacterFilters();
+  const [loading, setLoader] = useState(loader ? true : false);
   const [results, setResults] = useState([] as IFCharacter[]);
   const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
   const [noResults, setNoResults] = useState(false);
 
-  const temp = () => {
-    console.log('temp');
-  };
+  useEffect(() => {
+    fetchList();
+  }, [loading]);
 
   async function fetchList() {
     try {
-      setLoader(true);
-      const res = await getList(status as string);
+      const res = await getList(+page, status as string);
       if (res) {
-        console.log(res);
+        setResults((res as IFResponse).results);
+        setRespInfo((res as IFResponse).info);
         setTimeout(() => {
           setLoader(false);
-          setResults((res as IFResponse).results);
-          setRespInfo((res as IFResponse).info);
         }, 1000);
       } else {
         setLoader(false);
@@ -40,10 +38,6 @@ const Results = () => {
       console.error(error);
     }
   }
-  useEffect(() => {
-    fetchList();
-    temp();
-  }, []);
 
   return (
     <div className={styles.results}>
@@ -51,15 +45,14 @@ const Results = () => {
         {results.length !== 0 &&
           results.map((obj: IFCharacter) => {
             return (
-              <Link
-                to={`/?status=${status}&id${obj.id.toString()}`}
-                key={obj.id}
-              >
+              <Link to={`${obj.id.toString()}`} key={obj.id}>
                 <Card {...obj} />
               </Link>
             );
           })}
-        {results.length !== 0 && <Pagination resInfo={responseInfo} />}
+        {results.length !== 0 && (
+          <Pagination resInfo={responseInfo} handlePagination={setLoader} />
+        )}
         {noResults && <h1>No data</h1>}
       </div>
       {loading && <Loader />}

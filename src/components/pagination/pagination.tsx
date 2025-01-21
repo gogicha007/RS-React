@@ -1,30 +1,30 @@
 import styles from './pagination.module.css';
 import { IFRespInfo } from '../../types/interface';
-// import { useState } from 'react';
+import { useCharacterFilters } from '../../hooks/useCharacterFilter';
+import { isValidHTTPURL } from '../../utils/validator';
 
 interface Props {
   resInfo: IFRespInfo;
+  handlePagination: (b: boolean) => void;
 }
 
 export const Pagination = (props: Props) => {
-  // const [loading, setLoader] = useState(false)
-
-  const clickPagination = async (direction: 'prev' | 'next') => {
-    console.log(props.resInfo[direction]);
-    // setLoader(true);
-    const response = await fetch(props.resInfo[direction] as string);
-    if (response.status === 200) {
-      const data = await response.json();
-      console.log(data);
-      // props.onPageChange(data);
-    }
-    // setLoader(false);
+  const { page, setFilters } = useCharacterFilters();
+  const clickPagination = (direction: 'prev' | 'next') => {
+    const urlString = props.resInfo[direction];
+    if (isValidHTTPURL(urlString as string)) {
+      const url = new URL(urlString as string);
+      const searchParams = url.searchParams.get('page');
+      setFilters({ page: searchParams ? +searchParams : +page });
+      props.handlePagination(true);
+    } else console.error('URL string is not valid');
   };
 
   return (
     <>
       <nav className={styles.pgn}>
         <button
+          type="submit"
           onClick={() => clickPagination('prev')}
           className={styles.pgn__button}
           disabled={!props.resInfo.prev}
@@ -32,6 +32,7 @@ export const Pagination = (props: Props) => {
           &laquo;
         </button>
         <button
+          type="submit"
           onClick={() => clickPagination('next')}
           className={styles.pgn__button}
           disabled={!props.resInfo.next}

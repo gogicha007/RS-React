@@ -1,19 +1,25 @@
 import styles from './home.module.css';
+import { useState } from 'react';
 import SearchBar from '../../components/search/search-bar';
 import Results from '../../components/results/results';
-import { useCharacterFilters } from '../../hooks/useCharacterFilter';
+// import { useCharacterFilters } from '../../hooks/useCharacterFilter';
 
 function HomePage() {
-  const { status } = useCharacterFilters();
-  console.log(status);
+  const [loading, setLoader] = useState(false);
+  // const { status } = useCharacterFilters();
+  // console.log(status);
 
+  const handleSearch = () => {
+    console.log('home page handle search');
+    setLoader(true);
+  };
   return (
     <>
       <header className={styles.home__top}>
-        <SearchBar />
+        <SearchBar handleSearch={handleSearch} />
       </header>
       <main>
-        <Results />
+        <Results loader={loading} />
       </main>
     </>
   );

@@ -4,19 +4,23 @@ import { lsHandler } from '../../utils/localStorageHandler';
 import ErrorButton from '../errorButton/errorButton';
 import { useCharacterFilters } from '../../hooks/useCharacterFilter';
 
-function SearchBar() {
+function SearchBar({ handleSearch }: { handleSearch: () => void }) {
   const { status, setFilters } = useCharacterFilters();
 
   const clickSearch = async () => {
+    console.log('search clicked');
     lsHandler.setValue(status);
+    handleSearch();
   };
 
   const changeInput = (word: string) => {
-    setFilters({ status: word });
+    console.log('change input');
+    setFilters({ page: 1, status: word });
   };
 
   useEffect(() => {
     const searchWord = lsHandler.getValue();
+    setFilters({ page: 1 });
     if (!status && searchWord) {
       setFilters({ status: searchWord });
     }
@@ -36,6 +40,7 @@ function SearchBar() {
         <button
           type="submit"
           onClick={() => {
+            // e.preventDefault()
             clickSearch();
           }}
         >
