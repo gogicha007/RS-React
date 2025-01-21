@@ -11,7 +11,7 @@ import { useCharacterFilters } from '../../hooks/useCharacterFilter';
 
 const Results = ({ loader }: { loader: boolean }) => {
   const { page, status } = useCharacterFilters();
-  const [loading, setLoader] = useState(loader ? true : false);
+  const [loading, setLoader] = useState(loader ? loader : true);
   const [results, setResults] = useState([] as IFCharacter[]);
   const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
   const [noResults, setNoResults] = useState(false);

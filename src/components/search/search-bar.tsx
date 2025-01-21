@@ -39,8 +39,8 @@ function SearchBar({ handleSearch }: { handleSearch: () => void }) {
         />
         <button
           type="submit"
-          onClick={() => {
-            // e.preventDefault()
+          onClick={(e) => {
+            e.preventDefault();
             clickSearch();
           }}
         >
