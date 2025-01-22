@@ -19,9 +19,10 @@ export const Details = () => {
   }, []);
 
   const handleClickClose = () => {
-    context.closeClicked();
     navigate(-1);
+    context.closeClicked();
   };
+
   return (
     <>
       <div className={styles.details}>

@@ -15,6 +15,7 @@ const Results = ({ loader }: { loader: boolean }) => {
   const [results, setResults] = useState<IFCharacter[]>([]);
   const [responseInfo, setRespInfo] = useState({} as IFRespInfo);
   const [noResults, setNoResults] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     fetchList();
@@ -40,10 +41,12 @@ const Results = ({ loader }: { loader: boolean }) => {
   }
 
   const handleDetailsOpen = () => {
-    console.log('details opened');
+    setDisabled(true);
+    console.log('details opened', disabled);
   };
   const handleDetailsClose = () => {
     console.log('details closes');
+    setDisabled(false);
   };
 
   return (
@@ -56,7 +59,6 @@ const Results = ({ loader }: { loader: boolean }) => {
                 to={{
                   pathname: `${obj.id.toString()}`,
                 }}
-                onClick={() => console.log('clicked ', obj.id)}
                 key={obj.id}
               >
                 <Card {...obj} />
@@ -64,7 +66,11 @@ const Results = ({ loader }: { loader: boolean }) => {
             );
           })}
         {results.length !== 0 && (
-          <Pagination resInfo={responseInfo} handlePagination={setLoader} />
+          <Pagination
+            disabled={disabled}
+            resInfo={responseInfo}
+            handlePagination={setLoader}
+          />
         )}
         {noResults && <h1>No data</h1>}
       </div>

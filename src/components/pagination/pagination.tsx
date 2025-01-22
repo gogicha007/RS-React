@@ -4,6 +4,7 @@ import { useCharacterFilters } from '../../hooks/useCharacterFilter';
 import { isValidHTTPURL } from '../../utils/validator';
 
 interface Props {
+  disabled?: boolean;
   resInfo: IFRespInfo;
   handlePagination: (b: boolean) => void;
 }
@@ -24,6 +25,7 @@ export const Pagination = (props: Props) => {
     <>
       <nav className={styles.pgn}>
         <button
+          style={{ pointerEvents: props.disabled ? 'none' : 'initial' }}
           type="submit"
           onClick={() => clickPagination('prev')}
           className={styles.pgn__button}
@@ -32,6 +34,7 @@ export const Pagination = (props: Props) => {
           &laquo;
         </button>
         <button
+          style={{ pointerEvents: props.disabled ? 'none' : 'initial' }}
           type="submit"
           onClick={() => clickPagination('next')}
           className={styles.pgn__button}
