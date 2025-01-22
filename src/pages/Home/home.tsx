@@ -2,6 +2,7 @@ import styles from './home.module.css';
 import { useState } from 'react';
 import SearchBar from '../../components/search/search-bar';
 import Results from '../../components/results/results';
+import { Outlet } from 'react-router';
 
 function HomePage() {
   const [loading, setLoader] = useState(false);
@@ -11,6 +12,7 @@ function HomePage() {
     setLoader(true);
     setTrigger((prev) => prev + 1);
   };
+
   return (
     <>
       <header className={styles.home__top}>
@@ -18,6 +20,7 @@ function HomePage() {
       </header>
       <main>
         <Results loader={loading} key={trigger} />
+        <Outlet />
       </main>
     </>
   );

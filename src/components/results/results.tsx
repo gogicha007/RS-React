@@ -39,13 +39,24 @@ const Results = ({ loader }: { loader: boolean }) => {
     }
   }
 
+  // const onCloseDetails = ()=> {
+  //   console.log('details closes')
+  // }
+
   return (
     <div className={styles.results}>
       <div className={styles.results__list}>
         {results.length !== 0 &&
           results.map((obj: IFCharacter) => {
             return (
-              <Link to={`${obj.id.toString()}`} key={obj.id}>
+              <Link
+                to={{
+                  pathname: `${obj.id.toString()}`,
+                  // search: `?page=${page}&status=${status}`,
+                }}
+                onClick={() => console.log('clicked ', obj.id)}
+                key={obj.id}
+              >
                 <Card {...obj} />
               </Link>
             );
