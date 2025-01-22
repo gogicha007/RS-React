@@ -2,7 +2,6 @@ import styles from './home.module.css';
 import { useState } from 'react';
 import SearchBar from '../../components/search/search-bar';
 import Results from '../../components/results/results';
-import { Outlet } from 'react-router';
 
 function HomePage() {
   const [loading, setLoader] = useState(false);
@@ -20,7 +19,6 @@ function HomePage() {
       </header>
       <main>
         <Results loader={loading} key={trigger} />
-        <Outlet />
       </main>
     </>
   );

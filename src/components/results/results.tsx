@@ -39,9 +39,12 @@ const Results = ({ loader }: { loader: boolean }) => {
     }
   }
 
-  // const onCloseDetails = ()=> {
-  //   console.log('details closes')
-  // }
+  const handleDetailsOpen = () => {
+    console.log('details opened');
+  };
+  const handleDetailsClose = () => {
+    console.log('details closes');
+  };
 
   return (
     <div className={styles.results}>
@@ -52,7 +55,6 @@ const Results = ({ loader }: { loader: boolean }) => {
               <Link
                 to={{
                   pathname: `${obj.id.toString()}`,
-                  // search: `?page=${page}&status=${status}`,
                 }}
                 onClick={() => console.log('clicked ', obj.id)}
                 key={obj.id}
@@ -67,7 +69,12 @@ const Results = ({ loader }: { loader: boolean }) => {
         {noResults && <h1>No data</h1>}
       </div>
       {loading && <Loader />}
-      <Outlet />
+      <Outlet
+        context={{
+          closeClicked: handleDetailsClose,
+          isOpen: handleDetailsOpen,
+        }}
+      />
     </div>
   );
 };
